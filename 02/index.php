@@ -1,6 +1,16 @@
 <?php
 //1. set up VS Code with extensions, create a project folder, then push to Github 
 //1. Set Up & Start 
+/*XAMMP Set Up - show folder 
+
+Fork Repository 
+
+Show Github Desktop - find repository 
+
+Open code in visual studio code 
+
+Create a branch and work on the branch 
+*/
 
 /*remind students we need to create PHP opening tags to let the PHP engine know that PHP happening. If a file contains only PHP, the closing tag is optional and often recommended to omit (cleaner code, best practice, avoids headers already sent). Only include closing PHP tag when you are using a mix of PHP and HTML to let PHP engine know when to stop and when to resume */
 
