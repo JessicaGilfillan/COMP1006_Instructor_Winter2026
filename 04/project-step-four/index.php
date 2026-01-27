@@ -1,0 +1,114 @@
+<?php require "includes/header.php" ?>
+<main>
+  <h2 class="mb-"> Order Online - Easy & Simple (And Totally Secure...) 🧁</h2>
+  <form action="process.php" method="post" class="mt-5">
+
+    <!-- Customer Information -->
+    <fieldset>
+      <legend>Customer Information</legend>
+       <!-- add required for required information, add the type of information we are looking for email, password, telephone etc.-->
+        <label for="first_name" class="form-label">First name</label>
+        <input type="text" id="first_name" name="first_name" class="form-control" required>
+        <label for="last_name" class="form-label">Last name</label>
+        <input type="text" id="last_name" name="last_name" required class="form-control">
+        <label for="phone" class="form-label">Phone number</label>
+        <input type="text" id="phone" name="phone" placeholder="555-123-4567" required class="form-control">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" id="address" name="address " required class="form-control">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" id="email" name="email" required class="form-control">
+    </fieldset>
+
+    <!-- Order Details -->
+    <fieldset>
+      <legend>Order Details</legend>
+
+      <p>
+        Enter a quantity for each item (use 0 if you don't want it).
+      </p>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th scope="col">Baked Treat</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Chaos Croissant 🥐</th>
+            <td>
+              <label for="chaos_croissant" class="visually-hidden form-label">Chaos Croissant quantity</label>
+              <input type="text" id="chaos_croissant" name="items[chaos_croissant]" min="0" max="24" value="0" class="form-control">
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Midnight Muffin 🌙</th>
+            <td>
+              <label for="midnight_muffin" class="visually-hidden form-label">Midnight Muffin quantity</label>
+              <input type="text" id="midnight_muffin" name="items[midnight_muffin]" min="0" max="24" value="0" class="form-control">
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Existential Éclair 🤔</th>
+            <td>
+              <label for="existential_eclair" class="visually-hidden form-label">Existential Éclair quantity</label>
+              <input type="text" id="existential_eclair" name="items[existential_eclair]" min="0" max="24"
+                value="0" class="form-control">
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Procrastination Cookie ⏰</th>
+            <td>
+              <label for="procrastination_cookie" class="visually-hidden form-label">Procrastination Cookie quantity</label>
+              <input type="text" id="procrastination_cookie" name="items[procrastination_cookie]" min="0" max="24"
+                value="0" class="form-control">
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Finals Week Brownie 📚</th>
+            <td>
+              <label for="finals_week_brownie" class="visually-hidden form-label">Finals Week Brownie quantity</label>
+              <input type="text" id="finals_week_brownie" name="items[finals_week_brownie]" min="0" max="24"
+                value="0" class="form-control">
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row">Victory Cinnamon Roll 🏆</th>
+            <td>
+              <label for="victory_cinnamon_roll" class="visually-hidden form-label">Victory Cinnamon Roll quantity</label>
+              <input type="text" id="victory_cinnamon_roll" name="items[victory_cinnamon_roll]" min="0" max="24"
+                value="0" class="form-control">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </fieldset>
+
+    <fieldset>
+      <legend>Additional Comments</legend>
+
+      <p>
+        <label for="comments" class="form-label">Comments (optional)</label><br>
+        <textarea id="comments" name="comments" rows="4"
+          placeholder="Allergies, delivery instructions, custom messages..."></textarea>
+      </p>
+    </fieldset>
+
+    <p>
+      <button type="submit" class="btn btn-primary">Place Order</button>
+    </p>
+
+  </form>
+</main>
+</body>
+
+</html>
+
+<?php require "includes/footer.php" ?>
