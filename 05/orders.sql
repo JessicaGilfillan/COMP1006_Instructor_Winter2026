@@ -1,8 +1,10 @@
 CREATE TABLE orders (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  customer_name VARCHAR(100) NOT NULL,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  phone INT(100) NOT NULL,
+  address VARCHAR(100) NOT NULL,
   email VARCHAR(150) NOT NULL,
-  item VARCHAR(50) NOT NULL,
-  quantity INT NOT NULL,
+  comments VARCHAR(200) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
