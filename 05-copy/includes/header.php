@@ -23,4 +23,3 @@
             <a href="#"> Contact </a>
         </nav>
     </header>
-    <main>

@@ -112,18 +112,15 @@ if (!empty($errors)) {
 // NOTE: We insert ALL item columns every time.
 // If an item was not ordered, we store 0 for that column.
 $sql = "
-    INSERT INTO orders (
+    INSERT INTO orders1 (
         first_name,
         last_name,
         phone,
         address,
         email,
         chaos_croissant,
-        midnight_muffin,
         existential_eclair,
         procrastination_cookie,
-        finals_week_brownie,
-        victory_cinnamon_roll,
         comments
     ) VALUES (
         :first_name,
@@ -132,11 +129,8 @@ $sql = "
         :address,
         :email,
         :chaos_croissant,
-        :midnight_muffin,
         :existential_eclair,
         :procrastination_cookie,
-        :finals_week_brownie,
-        :victory_cinnamon_roll,
         :comments
     )
 ";
@@ -159,12 +153,6 @@ $stmt = $pdo->prepare($sql);
 
 // Build “clean” values for each DB column using defaults.
 // We pull from $itemsOrdered so only validated quantities get used.
-$chaosCroissant        = $itemsOrdered['chaos_croissant'] ?? 0;
-$midnightMuffin        = $itemsOrdered['midnight_muffin'] ?? 0;
-$existentialEclair     = $itemsOrdered['existential_eclair'] ?? 0;
-$procrastinationCookie = $itemsOrdered['procrastination_cookie'] ?? 0;
-$finalsWeekBrownie     = $itemsOrdered['finals_week_brownie'] ?? 0;
-$victoryCinnamonRoll   = $itemsOrdered['victory_cinnamon_roll'] ?? 0;
 
 // Customer info (bindParam is fine because these are real variables)
 $stmt->bindParam(':first_name', $firstName);
@@ -174,14 +162,19 @@ $stmt->bindParam(':address', $address);
 $stmt->bindParam(':email', $email);
 $stmt->bindParam(':comments', $comments);
 
+/* how does an array work with bindParam - we need a reference! $stmt->bindParam(':comments', );*/
+
+$chaosCroissant = $itemsOrdered['chaos_croissant']; 
+$existentialEclair     = $itemsOrdered['existential_eclair'] ?? 0;
+$procrastinationCookie = $itemsOrdered['procrastination_cookie'] ?? 0;
+
+
 // Order items
 // We bind as integers so the DB receives numeric values (0, 1, 2, ...).
 $stmt->bindParam(':chaos_croissant', $chaosCroissant, PDO::PARAM_INT);
-$stmt->bindParam(':midnight_muffin', $midnightMuffin, PDO::PARAM_INT);
 $stmt->bindParam(':existential_eclair', $existentialEclair, PDO::PARAM_INT);
 $stmt->bindParam(':procrastination_cookie', $procrastinationCookie, PDO::PARAM_INT);
-$stmt->bindParam(':finals_week_brownie', $finalsWeekBrownie, PDO::PARAM_INT);
-$stmt->bindParam(':victory_cinnamon_roll', $victoryCinnamonRoll, PDO::PARAM_INT);
+
 
 // --------------------------------------------------
 // 6. Execute
@@ -194,7 +187,7 @@ $stmt->execute();
 // Because header.php/footer.php usually handle the page shell,
 // we only output the content here (no second DOCTYPE/HTML tags).
 ?>
-<? require "includes/header.php"; ?>  // typically outputs DOCTYPE/head/nav/opening body tags
+<? require "includes/header.php"; ?>
 <div class="alert alert-success">
     <h1>Thank you for your order, <?= htmlspecialchars($firstName) ?>!</h1>
     <p>
