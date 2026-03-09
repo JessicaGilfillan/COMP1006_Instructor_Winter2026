@@ -1,0 +1,2 @@
+<title>My PHP Page</title>
+<!--As stated on index, this is probably the one thing you wouldn't find in this file. But things like meta tags and stylesheets would go here, which may be used on multiple pages.-->

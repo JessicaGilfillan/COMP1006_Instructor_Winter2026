@@ -1,0 +1,73 @@
+<?php
+//TODO:
+$dsn = "mysql:host=localhost;dbname=bitumi;charset=utf8";
+$username = "root";
+$password = "";
+
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+
+$subscribers = []; // placeholder
+
+// Select query to get all subscribers
+$sql = "SELECT * FROM subscribers ORDER BY subscribed_at DESC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$subscribers = $stmt->fetchAll();
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMP1006 - Lab Four</title>
+</head>
+
+<body>
+
+  <main class="container mt-4">
+    <h1>Subscribers</h1>
+
+    <?php if (count($subscribers) === 0): ?>
+      <p>No subscribers yet.</p>
+    <?php else: ?>
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Subscribed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TODO: Loop through $subscribers and output each row -->
+          <?php foreach ($subscribers as $subscriber): ?>
+            <tr>
+              <td><?= htmlspecialchars($subscriber["id"]) ?></td>
+              <td><?= htmlspecialchars($subscriber["first_name"]) ?></td>
+              <td><?= htmlspecialchars($subscriber["last_name"]) ?></td>
+              <td><?= htmlspecialchars($subscriber["email"]) ?></td>
+              <td><?= htmlspecialchars($subscriber["subscribed_at"]) ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    <?php endif; ?>
+
+    <p class="mt-3">
+      <a href="index.php">Back to Subscribe Form</a>
+    </p>
+  </main>
+</body>
+
+</html>
