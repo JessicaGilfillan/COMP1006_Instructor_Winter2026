@@ -42,20 +42,17 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/">View Site</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="products.php">View Products</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Order Online</a>
+                            <a class="nav-link" href="add-product.php">Add Product</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">Log Out</a>
                         </li>
